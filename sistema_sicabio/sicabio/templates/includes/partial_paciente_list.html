@@ -1,0 +1,42 @@
+<tr>
+    <th>ID</th>
+    <th>Nome</th>
+    <th>CPF</th>
+    <th>Data de Nascimento</th>
+    <th class="actions">Ações</th>
+</tr>
+
+{% for i in paciente %}
+    <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.nome_paciente }}</td>
+        <td>{{ i.cpf_paciente }}</td>
+        <td>{{ i.dt_nascimento }}</td>
+
+
+        <td class="actions">
+            <div class="btn-group" role="group" aria-label="Basic example">
+
+                   <a href="{{ i.id }}/adicionar-digitais/"> <button class="btn btn-secondary" type="button" data-toggle="tooltip" data-placement="top"
+                            title="Adicionar Digital"><i class="fas fa-fingerprint"></i></button></a>
+               
+                <button type="button" class="btn btn-secondary js-update-paciente" data-placement="top" title="Alterar Dados"
+                        data-toggle="modal"
+                        data-target="#myModal" title="Alterar Dados"
+                        data-url="{% url 'paciente_update' i.id %}"><i class="fas fa-pen"></i></button>
+
+
+
+                <a href="excluir_paciente/{{ i.id }}/">
+                    <button type="button" class="btn btn-secondary" data-placement="top" title="Excluir Paciente"><i
+                            class="fas fa-trash-alt"></i></button>
+                </a>
+                  <a href="{{ i.id }}/digitais/">
+                    <button type="button" class="btn btn-secondary" data-placement="top" title="Realizar análise dermatoglífica"><i class="fas fa-laptop-code"></i></button>
+                </a>
+
+            </div>
+        </td>
+    </tr>
+
+{% endfor %}

@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <title>PACIENTES</title>
+</head>
+
+<body>
+{% include 'navbar.html' %}
+<div id="main" class="container-fluid"  >
+
+ 	<div id="top" class="row">
+		<div class="col-sm-3 mt-lg-3">
+        <button class="btn btn-primary js-create-paciente" type="button"
+                                                id='CadPaciente' data-target="#myModal" data-toggle="modal"
+                                                data-url="{% url 'create-paciente' %}">Cadastrar Paciente</button>
+		</div>
+{#		<div class="col-sm-6">#}
+{#     <div class="search-div" style="position:relative;margin-left: 520px;width: 400px;top:10px;">#}
+{##}
+{#        <form  class="form-inline active-cyan-4"  method="GET" id="search-form">#}
+{#            <input class="form-control form-control-sm mr-3 w-75" type="text" id = 'buscar'name="buscar" placeholder="Pesquisar">#}
+{##}
+{##}
+{##}
+{#            <button  style="color: white;background: #0047a4;border:solid #0047a4;right:10px;position:relative;width:47px;height:32px;border-radius:5px;text-align: center;"><span class="material-icons pt-1 pb-2 " style="font-size:18px;position: relative;">search</span></button>#}
+{##}
+{#        </form>#}
+{#        </div>#}
+
+{#		</div>#}
+
+	</div>
+
+
+ 	<hr />
+ 	<div id="list" class="row">
+
+	<div class="table-responsive col-md-12">
+       {% if messages %}
+
+                    {% for message in messages %}
+                   <div class="container-fluid p-0">
+                  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                  </div>
+                </div>
+                    {% endfor %}
+
+                {% endif %}
+		<table id="table_p" class="table table-striped"  cellpadding="0">
+			{% include 'includes/partial_paciente_list.html' %}
+
+
+		</table>
+	</div>
+
+	</div> <!-- /#list -->
+
+
+    <div id="bottom" class="row">
+		<div class="col-md-12">
+			<ul class="pagination" style="margin-left: 450px;">
+
+				{% if paciente.has_previous %}
+           <li> <a href="?page=1">&lt; Anterior </a></li>
+             <a >
+            {{ paciente.number }} de {{ paciente.paginator.num_pages }}
+				<li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
+
+             </a>
+        {% endif %}
+
+
+        {% if paciente.has_next %}
+
+            <a href="?page={{ paciente.next_page_number }}">&lt; Anterior </a>
+            <a><span class="current"style="position: relative;top:5px;">
+            {{ paciente.number }} de {{ paciente.paginator.num_pages }}
+        </span></a>
+
+            <a href="?page={{ paciente.paginator.num_pages }}"> Próximo &gt;</a>
+        {% endif %}
+
+            </ul><!-- /.pagination -->
+
+
+
+
+
+
+
+        </div>
+	</div><!-- /#bottom -->
+ </div> <!-- /#main -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block javascript %}
+
+    <script>
+
+        $(function () {
+
+            /* Functions */
+
+            var loadForm = function () {
+                var btn = $(this);
+                $.ajax({
+                    url: btn.attr("data-url"),
+                    type: 'get',
+                    dataType: 'json',
+                    beforeSend: function () {
+                        $("#myModal").modal("show");
+                    },
+                    success: function (data) {
+                        $("#myModal .modal-content").html(data.html_form);
+                    }
+                });
+            };
+
+
+            var saveForm = function () {
+                var form = $(this);
+                $.ajax({
+                    url: form.attr("action"),
+                    data: form.serialize(),
+                    type: form.attr("method"),
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.form_is_valid) {
+                            $('#table_p tbody').html(data.html_paciente_list)
+                            alert('Dados Salvos!');
+                            form.trigger("reset");
+
+                        } else {
+                            alert('Paciente ja existe!')
+                            $("#myModal .modal-content").html(data.html_form);
+                        }
+                    }
+                });
+                return false;
+            };
+            // create Paciente
+            $("#CadPaciente").click(loadForm);
+            $("#myModal").on("submit", ".js-paciente-create-form", saveForm);
+
+    //// Update Paciente
+            $("#table_p").on("click", ".js-update-paciente", loadForm);
+            $("#myModal").on("submit", ".js-paciente-update-form", saveForm);
+        });
+
+
+
+
+    </script>
+{% endblock javascript %}

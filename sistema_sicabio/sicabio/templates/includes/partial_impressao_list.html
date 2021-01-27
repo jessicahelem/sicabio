@@ -1,0 +1,26 @@
+<div class='container'>
+{% for i in impressao %}
+    <div class="row">
+    <div class="col-md-4">
+      <div class="thumbnail">
+        <a href="/w3images/lights.jpg" target="_blank">
+          <img src="{{ i.image_url }}" alt="Lights" style="width:100%">
+          <div class="caption">
+            <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+
+{% empty %}
+    <tr>
+        <td colspan="7" class="text-center">Não existem impressões</td>
+    </tr>
+
+
+{% endfor %}
+
+
+    </div>
+</div>

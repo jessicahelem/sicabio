@@ -1,0 +1,56 @@
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <form method="post" name="formPaciente" action="{% url 'create-paciente' %}" class="js-paciente-create-form">
+ <div class="modal-header">
+          <h4 class="modal-title">Cadastrar Paciente</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+        {% include 'includes/partial_paciente_form.html' %}
+
+
+                                 <div class="form-row">
+                    <div class="col-sm mt-3">
+
+                   {% if messages %}
+
+                    {% for message in messages %}
+                   <div class="container p-0">
+                  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                  </div>
+                </div>
+                    {% endfor %}
+
+                {% endif %}
+
+                    </div>
+                </div>
+
+
+          <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+           <button type="submit" class="btn btn-primary" >Salvar</button>
+
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+</form>
