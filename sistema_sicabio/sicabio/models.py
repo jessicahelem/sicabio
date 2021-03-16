@@ -59,10 +59,7 @@ class Paciente(models.Model):
     # user = models.ForeignKey('User',on_delete=models.CASCADE,null=False)
 
     def __str__(self):
-        return str(self.nome_paciente)
-
-
-
+        return str(self.id)
 
 
 
@@ -70,13 +67,12 @@ class Paciente(models.Model):
 
 class Impressao(models.Model):
 
-    img = models.ImageField(upload_to='impressoes', null=True, blank=True, default='media/avatar.png')
+    img = models.ImageField(upload_to='impressoes', null=False, default='')
     paciente = models.ForeignKey('Paciente', on_delete=models.CASCADE, related_name='im_digital')
-
+    dedos = models.CharField(max_length=200,null=False,default='')
+    mao =  models.CharField(max_length=200,null=False,default='')
     def __str__(self):
         return str(self.id)
 
-    @property
-    def image_url(self):
-        if self.img and hasattr(self.img, 'url'):
-            return self.img.url
+
+

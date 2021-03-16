@@ -21,6 +21,9 @@
     <orderEntry type="library" name="jquery.mask" level="application" />
     <orderEntry type="library" name="popper.js" level="application" />
     <orderEntry type="library" name="a076d05399" level="application" />
+    <orderEntry type="library" name="tilt.js" level="application" />
+    <orderEntry type="library" name="select2" level="application" />
+    <orderEntry type="library" name="blueimp-file-upload" level="application" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />

@@ -1,6 +1,10 @@
+import json
+
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 # Create your views here.
 from django.template.loader import render_to_string
@@ -13,8 +17,7 @@ from sicabio.models import Paciente, Impressao
 
 
 def home(request):
-
-    return render(request,'listagem_pacientes.html')
+    return render(request, 'listagem_pacientes.html')
 
 
 def list_all_pacientes(request):
@@ -32,71 +35,138 @@ def list_all_pacientes(request):
 
     return render(request, 'listagem_pacientes.html', {'paciente': paciente})
 
+
 def delete_paciente(request, id):
     paciente = Paciente.objects.get(id=id)
     paciente.delete()
     messages.success(request, "Paciente excluído com sucesso.")
     return redirect('../../../pacientes/')
 
-def form(request,id):
+
+def form(request, id):
     paciente = Paciente.objects.get(id=id)
-    return render(request,'add_digital.html',{'paciente':paciente})
+    return render(request, 'add_digital.html', {'paciente': paciente})
 
 
+def do_login(request):
+    return render(request, 'login.html')
 
 
-# class ViewMedicamento(TemplateView):
-#     template_name = 'base_consulta.html'
+@csrf_protect
+def submit_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('/')
+        else:
+            messages.error(request, 'Usuário e senha inválidos. Por favor, tente novamente.')
+    return redirect('/login/')
+
+
+@login_required(login_url='/login/')
+def logout_user(request):
+    logout(request)
+    return redirect('/login')
+
+#
+# class ViewImpressao(TemplateView):
+#     template_name = 'add_digital.html'
 #
 #     def get_context_data(self, **kwargs):
+#         paciente = Paciente.objects.all()
 #         context = super().get_context_data(**kwargs)
-#         context['medicamento'] = Medicamento.objects.all()
+#         context= {'form':ImpressaoForm(self.request.POST),'paciente':paciente}
+#         print('Testando',context)
+#
 #         return context
-
-class BasicUploadView(View):
+#
+#
+#
+#
+# @csrf_protect
+# def save_impressao_form(request, form, template_name):
+#
+#     data = dict()
+#     if request.method == 'POST':
+#
+#         if form.is_valid():
+#
+#             pacient = form.cleaned_data.get('paciente')
+#             print('FORMPACIENTE',pacient)
+#             form_im = ImpressaoForm( data=request.POST, files=request.FILES,instance=pacient)
+#
+#
+#             data['form_is_valid'] = True
+#
+#
+#         else:
+#             data['form_is_valid'] = False
+#             form = ImpressaoForm(request.POST)
+#             print('invalid form')
+#
+#             print('Erro:', form.errors)
+#
+#
+#
+#
+#     context = {'form': form}
+#     data['html_form'] = render_to_string(template_name, context, request=request)
+#     return JsonResponse(data)
+#
+# def impressao_create(request):
+#     if request.method == 'POST':
+#         form = ImpressaoForm(request.POST)
+#     else:
+#         form = ImpressaoForm(request.POST)
+#         print(form.errors)
+#
+#     return save_impressao_form(request, form, 'add_digital.html')
+@csrf_protect
+def post(request,id):
+    paciente_id = request.POST.get('id_paciente')
+    paciente = Paciente.objects.get(pk=id)
     data = dict()
-    def get(self, request,id):
-        impressao = Impressao.objects.filter(paciente=id)
-        paciente = Paciente.objects.get(pk=id)
-        return render(self.request, 'add_digital.html', {'impressao': impressao,'paciente':paciente})
 
-    def post(self, request,id):
-        data = dict()
-        paciente_id = request.POST.get('paciente-id')
-        paciente = Paciente.objects.get(id=paciente_id)
-        form = ImpressaoForm(self.request.POST, self.request.FILES)
+    if request.method == "POST":
 
-
+        form = ImpressaoForm(data=request.POST, files=request.FILES)
         if form.is_valid():
-            impressao = form.save(commit=False)
-            impressao.paciente = paciente
-            impressao.save()
 
+            file = form.save(commit=False)
+            file.paciente = paciente
+
+            file.save()
             data['form_is_valid'] = True
-            arquivo = Impressao.objects.filter(paciente=paciente)
-            data['html_file_list'] = render_to_string('includes/partial_impressao_list.html', {'arquivo': arquivo})
-        else:
-            data = {'is_valid': False}
-            print(form.errors)
+            data['html_file_list'] = render_to_string('includes/partial_impressao_list.html')
+            return JsonResponse(data)
 
-        print(form.errors)
-        return JsonResponse(data)
+        else:
+            data['form_is_valid'] = False
+            form = ImpressaoForm(request.POST)
+
+            print('invalid form')
+            print(form.errors)
+            return JsonResponse(data)
+
+    form = ImpressaoForm(request.POST)
+    return render(request,'listar_impressoes.html',{'form':form})
+
 
 
 @csrf_protect
 def save_paciente_form(request, form, template_name):
-
-
     data = dict()
     if request.method == 'POST':
-
 
         if form.is_valid():
 
             form.save()
             data['form_is_valid'] = True
             print(form.errors)
-
 
             paciente = Paciente.objects.filter()
             data['html_paciente_list'] = render_to_string('includes/partial_paciente_list.html', {
@@ -135,8 +205,14 @@ def paciente_update(request, pk):
 
     return save_paciente_form(request, form, 'includes/partial_paciente_update.html')
 
-def listarImpressoes(request,id):
+
+def listarImpressoes(request, id):
     paciente = Paciente.objects.get(id=id)
     impressao = Impressao.objects.filter(paciente=paciente)
 
-    return render(request,'listar_impressoes.html',{'paciente':paciente,'impressao':impressao})
+    return render(request, 'listar_impressoes.html', {'paciente': paciente, 'impressao': impressao})
+
+def delete_impressao(request,id,id_impressao):
+    impressao = Impressao.objects.get(id=id_impressao)
+    impressao.delete()
+    return redirect('../../../digitais/',{'impressao':impressao})

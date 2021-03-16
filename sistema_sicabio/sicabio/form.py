@@ -51,5 +51,11 @@ class PacienteForm(forms.ModelForm):
 class ImpressaoForm(forms.ModelForm):
     class Meta:
         model = Impressao
-        fields = ('img',)
+        fields = ('img','dedos','mao','paciente',)
+
+
+
+
+
+
 

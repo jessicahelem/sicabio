@@ -1,330 +1,506 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-{#        <link rel="stylesheet" href="{% static 'css/cad_p.css' %}">#}
-{#            <link rel="stylesheet" href="{% static 'css/upload.css' %}">#}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+          integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+          crossorigin="anonymous"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    {#        <link rel="stylesheet" href="{% static 'css/cad_p.css' %}">#}
+    {#            <link rel="stylesheet" href="{% static 'css/upload.css' %}">#}
 
-    <title>PACIENTES</title>
+    <title>Adicionar Impressão Digital</title>
 </head>
 
 <div>
-<style>
+    <style>
 
-    body {
-  background: whitesmoke;
-  font-family: "Open Sans", sans-serif;
-}
-.container {
-  max-width: 960px;
-  margin: 30px auto;
-  padding: 20px;
-}
-h1 {
-  font-size: 20px;
-  text-align: center;
-  margin: 20px 0 20px;
-}
-h1 small {
-  display: block;
-  font-size: 15px;
-  padding-top: 8px;
-  color: gray;
-}
-.avatar-upload {
-  position: relative;
-  max-width: 205px;
-  margin: 50px auto;
-}
-.avatar-upload .avatar-edit {
-  position: absolute;
-  right: 12px;
-  z-index: 1;
-  top: 10px;
-}
-.avatar-upload .avatar-edit input {
-  display: none;
-}
-.avatar-upload .avatar-edit input + label {
-  display: inline-block;
-  width: 34px;
-  height: 34px;
-  margin-bottom: 0;
-  border-radius: 100%;
-  background: #ffffff;
-  border: 1px solid transparent;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
-  font-weight: normal;
-  transition: all 0.2s ease-in-out;
-}
-.avatar-upload .avatar-edit input + label:hover {
-  background: #f1f1f1;
-  border-color: #d6d6d6;
-}
-.avatar-upload .avatar-edit input + label:after {
-  content: "\f040";
-  font-family: "FontAwesome";
-  color: #757575;
-  position: absolute;
-  top: 5px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  margin: auto;
-}
-.avatar-upload .avatar-preview {
-  width: 150px;
-  height: 150px;
-  position: relative;
-  border-radius: 100%;
-  border: 6px solid #f8f8f8;
-    text-align: center;
-  margin: auto;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-}
-.avatar-upload .avatar-preview > div {
-  width: 100%;
-  height: 100%;
-  border-radius: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+        body {
+            background: whitesmoke;
+            font-family: "Open Sans", sans-serif;
+        }
 
-}
-#btn-cad{
-    top:255px;
-    position:relative;
-}
-.container{
-    position: relative;
-    bottom:80px;
-}
-</style>
-{% include 'navbar.html' %}
+        #form {
+            position: relative;
+            bottom: 50px;
+        }
 
-<div class="container" id="cont"  style="position: relative;margin-left:200px;">
-<nav aria-label="breadcrumb">
-        <ol class="breadcrumb" style="background-color:#F5F5F5;top: 80px;position: relative">
-            <li class="breadcrumb-item "><a href="../../../pacientes"> Pacientes</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Adicionar Impressões Digitais</li>
-        </ol>
-    </nav>
+        #form2 {
+            position: relative;
+            bottom: 50px;
+
+        }
+
+        #form3 {
+            position: relative;
+            bottom: 50px;
+        }
+
+        #form4 {
+            position: relative;
+            bottom: 50px;
+        }
+
+        #form5 {
+            position: relative;
+            bottom: 50px;
+        }
+
+        #form6 {
+            position: relative;
+            bottom: 50px;
+        }
+
+        #form7 {
+            position: relative;
+            bottom: 50px;
+        }
+
+        #form8 {
+            position: relative;
+            bottom: 50px;
+        }
+
+        #form9 {
+            position: relative;
+            bottom: 50px;
+        }
+
+        #form10 {
+            position: relative;
+            bottom: 50px;
+        }
 
 
-    <div class="row">
-          <form enctype="multipart/form-data" action="submit" method="post" id="form">{% csrf_token %}
-            <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
-        <div class="row"> <button type="submit"id="btn-cad" class="btn btn-primary ml-4"  onclick=Alerta()>Adicionar Digitais</button>
-</div>
-    <div class="col-sm">
-        <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload1" name="id_img" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload1"></label>
-        </div>
+        .container {
+            max-width: 960px;
 
-        <div class="avatar-preview">
-            <div id="imagePreview1" style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
-            </div>
-        </div>
+        }
 
-    </div>
+        h1 {
+            font-size: 20px;
+            text-align: center;
+            margin: 20px 0 20px;
+        }
 
-    </div>
+        h1 small {
+            display: block;
+            font-size: 15px;
+            padding-top: 8px;
+            color: gray;
+        }
 
-         </form>
-     <form enctype="multipart/form-data" action="submit" method="post"id="form2">{% csrf_token %}
-         <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
+        .avatar-upload {
+            position: relative;
+            max-width: 205px;
+            margin: 50px auto;
+        }
 
-        <div class="row"> <button type="submit"id="btn-cad" class="btn btn-primary ml-4" >Adicionar Digitais</button>
-</div>
-    <div class="col-sm ">
-         <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload2" name="id_img" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload2"></label>
-        </div>
-        <div class="avatar-preview  ">
-            <div id="imagePreview2" style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
-            </div>
-        </div>
-    </div>
+        .avatar-upload .avatar-edit {
+            position: absolute;
+            right: 12px;
+            z-index: 1;
+            top: 10px;
+        }
+
+        .avatar-upload .avatar-edit input {
+            display: none;
+        }
+
+        .avatar-upload .avatar-edit input + label {
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            margin-bottom: 0;
+            border-radius: 100%;
+            background: #ffffff;
+            border: 1px solid transparent;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            font-weight: normal;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .avatar-upload .avatar-edit input + label:hover {
+            background: #f1f1f1;
+            border-color: #d6d6d6;
+        }
+
+        .avatar-upload .avatar-edit input + label:after {
+            content: "\f040";
+            font-family: "FontAwesome";
+            color: #757575;
+            position: absolute;
+            top: 5px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            margin: auto;
+        }
+
+        .avatar-upload .avatar-preview {
+            width: 150px;
+            height: 150px;
+            position: relative;
+            border-radius: 100%;
+            border: 6px solid #f8f8f8;
+            text-align: center;
+            margin: auto;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatar-upload .avatar-preview > div {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
+        }
+
+        #btn-cad {
+            top: 255px;
+            position: relative;
+        }
 
 
-    </div>
-         </form>
-        <form enctype="multipart/form-data" action="submit" method="post"id="form3">{% csrf_token %}
-                        <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
+    </style>
+    {% include 'navbarIII.html' %}
 
-        <div class="row"> <button type="submit"id="btn-cad" class="btn btn-primary ml-4">Adicionar Digitais</button>
-</div>
-    <div class="col-sm">
-         <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload3" name='id_img' accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload3"></label>
-        </div>
-        <div class="avatar-preview">
-            <div id="imagePreview3" style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
-            </div>
-        </div>
-    </div>
+    <div class="container" style="position: relative;top:20px; " id="cont">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" style="background-color:#F5F5F5">
+                <li class="breadcrumb-item "><a href="../../../pacientes"> Pacientes</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Adicionar Impressões Digitais</li>
+            </ol>
+        </nav>
 
 
-    </div>
+        <div class="row">
+            <form  method="POST" enctype="multipart/form-data" novalidate="" id="form">
+                {% csrf_token %}
+                <div class="row">
+                    <button type="submit" class="btn btn-primary ml-4">Adicionar Digital</button>
+
+                </div>
+
+                <div class="col-sm">
+                    <div class="avatar-upload">
+                        <div class="avatar-edit">
+                            <input type='file' id="imageUpload1" name="img" accept=".png, .jpg, .jpeg"
+                                   data-required="file">
+                            <label for="imageUpload1"></label>
+                        </div>
+
+                        <div class="avatar-preview">
+                            <div id="imagePreview1"
+                                 style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <input class="form-control" name="dedos" id="id_dedos" value="polegar">
+
+                </div>
+                <div class="row">
+                    <input class="form-control" name="mao" id="id_mao" value="mão esquerda">
+
+                </div>
+                <div class="row">
+                    <input class="form-control" name="paciente" id="id_paciente" value="{{ paciente.id }}">
+
+
+                </div>
+
+
             </form>
-        <form enctype="multipart/form-data" action="submit" method="post"id="form4">{% csrf_token %}
-         <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
-        <div class="row"> <button type="submit"id="btn-cad" class="btn btn-primary ml-4" >Adicionar Digitais</button>
-</div>
-    <div class="col-sm">
-         <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload4" name="id_img" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload4"></label>
-        </div>
-        <div class="avatar-preview">
-            <div id="imagePreview4" style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
-            </div>
-        </div>
-    </div>
+            <form enctype="multipart/form-data" action="submit" method="post" id="form2">{% csrf_token %}
+
+                <div class="row">
+                    <button type="submit" id="btn-cad" class="btn btn-primary ml-4">Adicionar Digitais</button>
+                </div>
+                <div class="col-sm ">
+                    <div class="avatar-upload">
+                        <div class="avatar-edit">
+                            <input type='file' id="imageUpload2" name="img" accept=".png, .jpg, .jpeg"/>
+                            <label for="imageUpload2"></label>
+                        </div>
+                        <div class="avatar-preview  ">
+                            <div id="imagePreview2"
+                                 style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <input hidden class="form-control" name="dedos" id="dedo_id" value="indicador">
+
+                </div>
+                <div class="row">
+                    <input hidden class="form-control" name="mao" id="mao_id" value="mão esquerda">
 
 
-    </div>
+                </div>
             </form>
-        <form enctype="multipart/form-data" action="submit" method="post" id="form5">{% csrf_token %}
-        <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
+            <form enctype="multipart/form-data" action="submit" method="post" id="form3">{% csrf_token %}
+                <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
 
-        <div class="row"> <button type="submit"id="btn-cad" class="btn btn-primary ml-4" >Adicionar Digitais</button>
-</div>
-    <div class="col-sm ">
-         <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload5" name="id_img" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload5"></label>
-        </div>
-        <div class="avatar-preview">
-            <div id="imagePreview5" style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                <div class="row">
+                    <button type="submit" id="btn-cad" class="btn btn-primary ml-4">Adicionar Digitais</button>
+                </div>
+                <div class="col-sm">
+                    <div class="avatar-upload">
+                        <div class="avatar-edit">
+                            <input type='file' id="imageUpload3" name='id_img' accept=".png, .jpg, .jpeg"/>
+                            <label for="imageUpload3"></label>
+                        </div>
+                        <div class="avatar-preview">
+                            <div id="imagePreview3"
+                                 style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <input hidden class="form-control" name="dedos" id="dedo_id" value="medio">
+
+                </div>
+                <div class="row">
+                    <input hidden class="form-control" name="mao" id="mao_id" value="mão esquerda">
+
+
+                </div>
+            </form>
+            <form enctype="multipart/form-data" action="submit" method="post" id="form4">{% csrf_token %}
+                <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
+                <div class="row">
+                    <button type="submit" id="btn-cad" class="btn btn-primary ml-4">Adicionar Digitais</button>
+                </div>
+                <div class="col-sm">
+                    <div class="avatar-upload">
+                        <div class="avatar-edit">
+                            <input type='file' id="imageUpload4" name="id_img" accept=".png, .jpg, .jpeg"/>
+                            <label for="imageUpload4"></label>
+                        </div>
+                        <div class="avatar-preview">
+                            <div id="imagePreview4"
+                                 style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <input hidden class="form-control" name="dedos" id="dedo_id" value="anelar">
+
+                </div>
+                <div class="row">
+                    <input hidden class="form-control" name="mao" id="mao_id" value="mão esquerda">
+
+
+                </div>
+            </form>
+            <form enctype="multipart/form-data" action="submit" method="post" id="form5">{% csrf_token %}
+                <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
+
+                <div class="row">
+                    <button type="submit" id="btn-cad" class="btn btn-primary ml-4">Adicionar Digitais</button>
+                </div>
+                <div class="col-sm ">
+                    <div class="avatar-upload">
+                        <div class="avatar-edit">
+                            <input type='file' id="imageUpload5" name="id_img" accept=".png, .jpg, .jpeg"/>
+                            <label for="imageUpload5"></label>
+                        </div>
+                        <div class="avatar-preview">
+                            <div id="imagePreview5"
+                                 style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row">
+                    <input hidden class="form-control" name="dedos" id="dedo_id" value="minimo">
+
+
+                </div>
+                <div class="row">
+                    <input hidden class="form-control" name="mao" id="mao_id" value="mão esquerda">
+
+
+                </div>
+
+            </form>
+            <div class="row">
+                <form enctype="multipart/form-data" action="submit" method="post" id="form6">{% csrf_token %}
+                    <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
+
+                    <div class="row">
+                        <button type="submit" id="btn-cad" class="btn btn-primary ml-4">Adicionar Digitais</button>
+                    </div>
+                    <div class="col-sm">
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type='file' id="imageUpload6" name="id_img" accept=".png, .jpg, .jpeg"/>
+                                <label for="imageUpload6"></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview6"
+                                     style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input hidden class="form-control" name="dedos" id="dedo_id" value="polegar">
+
+                    </div>
+                    <div class="row">
+                        <input hidden class="form-control" name="mao" id="mao_id" value="mão direita">
+
+                    </div>
+                </form>
+                <form enctype="multipart/form-data" action="submit" method="post" id="form7">{% csrf_token %}
+                    <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
+
+                    <div class="row">
+                        <button type="submit" id="btn-cad" class="btn btn-primary ml-4">Adicionar Digitais</button>
+                    </div>
+                    <div class="col-sm ">
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type='file' id="imageUpload7" name="id_img" accept=".png, .jpg, .jpeg"/>
+                                <label for="imageUpload7"></label>
+                            </div>
+                            <div class="avatar-preview  ">
+                                <div id="imagePreview7"
+                                     style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <input hidden class="form-control" name="dedos" id="dedo_id" value="indicador">
+
+                    </div>
+                    <div class="row">
+                        <input hidden class="form-control" name="mao" id="mao_id" value="mão direita">
+
+                    </div>
+                </form>
+                <form enctype="multipart/form-data" action="submit" method="post" id="form8">{% csrf_token %}
+                    <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
+
+                    <div class="row">
+                        <button type="submit" id="btn-cad" class="btn btn-primary ml-4">Adicionar Digitais</button>
+                    </div>
+                    <div class="col-sm">
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type='file' id="imageUpload8" name="id_img" accept=".png, .jpg, .jpeg"/>
+                                <label for="imageUpload8"></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview8"
+                                     style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <input hidden class="form-control" name="dedos" id="dedo_id" value="médio">
+                    </div>
+                    <div class="row">
+                        <input hidden class="form-control" name="mao" id="mao_id" value="mão direita">
+
+                    </div>
+                </form>
+                <form enctype="multipart/form-data" action="submit" method="post" id="form9">{% csrf_token %}
+                    <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
+
+                    <div class="row">
+                        <button type="submit" id="btn-cad" class="btn btn-primary ml-4">Adicionar Digitais</button>
+                    </div>
+                    <div class="col-sm">
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type='file' id="imageUpload9" name="id_img" accept=".png, .jpg, .jpeg"/>
+                                <label for="imageUpload9"></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview9"
+                                     style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <input hidden class="form-control" name="dedos" id="dedo_id" value="anelar">
+
+                    </div>
+                    <div class="row">
+                        <input hidden class="form-control" name="mao" id="mao_id" value="mão direita">
+
+                    </div>
+                </form>
+                <form enctype="multipart/form-data" action="submit" method="post" id="form10">{% csrf_token %}
+                    <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
+
+                    <div class="row">
+                        <button type="submit" id="btn-cad" class="btn btn-primary ml-4">Adicionar Digitais</button>
+                    </div>
+                    <div class="col-sm ">
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type='file' id="imageUpload10" name="id_img" accept=".png, .jpg, .jpeg"/>
+                                <label for="imageUpload10"></label>
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview10"
+                                     style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <input hidden class="form-control" name="dedos" id="dedo_id" value="minimo">
+
+                    </div>
+                    <div class="row">
+                        <input hidden class="form-control" name="mao" id="mao_id" value="mão direita">
+
+                    </div>
+                </form>
             </div>
+
         </div>
-    </div>
-
 
     </div>
-
-
-    </form>
-     <div class="row">
-          <form enctype="multipart/form-data" action="submit" method="post"id="form6">{% csrf_token %}
-           <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
-
-        <div class="row"> <button type="submit"id="btn-cad" class="btn btn-primary ml-4"  >Adicionar Digitais</button>
-</div>
-    <div class="col-sm">
-        <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload6" name="id_img" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload6"></label>
-        </div>
-        <div class="avatar-preview">
-            <div id="imagePreview6" style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
-            </div>
-        </div>
-    </div>
-    </div>
-          </form>
-          <form enctype="multipart/form-data" action="submit" method="post" id="form7">{% csrf_token %}
-      <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
-
-        <div class="row"> <button type="submit"id="btn-cad" class="btn btn-primary ml-4" >Adicionar Digitais</button>
-</div>
-    <div class="col-sm ">
-         <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload7" name="id_img" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload7"></label>
-        </div>
-        <div class="avatar-preview  ">
-            <div id="imagePreview7" style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
-            </div>
-        </div>
-    </div>
-
-    </div>
-          </form>
-          <form enctype="multipart/form-data" action="submit" method="post" id="form8">{% csrf_token %}
-                          <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
-
-        <div class="row"> <button type="submit"id="btn-cad" class="btn btn-primary ml-4" >Adicionar Digitais</button>
-</div>
-    <div class="col-sm">
-         <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload8" name="id_img" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload8"></label>
-        </div>
-        <div class="avatar-preview">
-            <div id="imagePreview8" style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
-            </div>
-        </div>
-    </div>
-
-    </div>
-          </form>
-          <form enctype="multipart/form-data" action="submit" method="post" id="form9">{% csrf_token %}
-                          <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
-
-        <div class="row"> <button type="submit"id="btn-cad" class="btn btn-primary ml-4" >Adicionar Digitais</button>
-</div>
-    <div class="col-sm">
-         <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload9" name="id_img" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload9"></label>
-        </div>
-        <div class="avatar-preview">
-            <div id="imagePreview9" style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
-            </div>
-        </div>
-    </div>
-
-    </div>
-          </form>
-          <form enctype="multipart/form-data" action="submit" method="post" id="form10">{% csrf_token %}
-                          <input hidden type="number" value="{{ paciente.id }}" id="paciente-id" name="paciente-id">
-
-        <div class="row"> <button type="submit"id="btn-cad" class="btn btn-primary ml-4"  >Adicionar Digitais</button>
-</div>
-    <div class="col-sm ">
-         <div class="avatar-upload">
-        <div class="avatar-edit">
-            <input type='file' id="imageUpload10" name="id_img" accept=".png, .jpg, .jpeg" />
-            <label for="imageUpload10"></label>
-        </div>
-        <div class="avatar-preview">
-            <div id="imagePreview10" style="background-image: url('{% static 'images/fingerprint_add.png' %}')">
-            </div>
-        </div>
-    </div>
-
-
-    </div>
-          </form>
-  </div>
-
-</div>
-
-</div>
 </div>
 
 
@@ -336,246 +512,275 @@ h1 small {
     <script src="{% static 'js/jQuery-File-Upload/js/vendor/jquery.ui.widget.js' %}"></script>
     <script src="{% static 'js/jQuery-File-Upload/js/jquery.iframe-transport.js' %}"></script>
     <script src="{% static 'js/jQuery-File-Upload/js/jquery.fileupload.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/10.31.0/js/jquery.fileupload.min.js"
+            integrity="sha512-qPkNWpUqYz8bhO5bGNPBvlCB9hPZBil2ez5Mo8yVmpCKI315UDDPQeg/TE7KwZ+U/wdSO8JguwVxYY/Ha7U+vQ=="
+            crossorigin="anonymous"></script>
 
     <script>
+
+
     function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview1').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview1').hide();
-            $('#imagePreview1').fadeIn(650);
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview1').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview1').hide();
+                $('#imagePreview1').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
     function readURL2(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview2').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview2').hide();
-            $('#imagePreview2').fadeIn(650);
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview2').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview2').hide();
+                $('#imagePreview2').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
-  function readURL3(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview3').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview3').hide();
-            $('#imagePreview3').fadeIn(650);
+    function readURL3(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview3').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview3').hide();
+                $('#imagePreview3').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
-  function readURL4(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview4').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview4').hide();
-            $('#imagePreview4').fadeIn(650);
+    function readURL4(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview4').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview4').hide();
+                $('#imagePreview4').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
-  function readURL5(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview5').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview5').hide();
-            $('#imagePreview5').fadeIn(650);
+    function readURL5(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview5').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview5').hide();
+                $('#imagePreview5').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
-  function readURL6(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview6').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview6').hide();
-            $('#imagePreview6').fadeIn(650);
+    function readURL6(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview6').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview6').hide();
+                $('#imagePreview6').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
-  function readURL7(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview7').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview7').hide();
-            $('#imagePreview7').fadeIn(650);
+    function readURL7(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview7').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview7').hide();
+                $('#imagePreview7').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
 
-  function readURL7(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview7').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview7').hide();
-            $('#imagePreview7').fadeIn(650);
+    function readURL7(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview7').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview7').hide();
+                $('#imagePreview7').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
-  function readURL8(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview8').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview8').hide();
-            $('#imagePreview8').fadeIn(650);
+    function readURL8(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview8').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview8').hide();
+                $('#imagePreview8').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
-  function readURL9(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview9').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview9').hide();
-            $('#imagePreview9').fadeIn(650);
+    function readURL9(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview9').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview9').hide();
+                $('#imagePreview9').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
- function readURL10(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            $('#imagePreview10').css('background-image', 'url('+e.target.result +')');
-            $('#imagePreview10').hide();
-            $('#imagePreview10').fadeIn(650);
+    function readURL10(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview10').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview10').hide();
+                $('#imagePreview10').fadeIn(650);
 
+            }
+            reader.readAsDataURL(input.files[0]);
         }
-        reader.readAsDataURL(input.files[0]);
     }
-}
+
+
+
+    $("#imageUpload1").change(function () {
+        readURL(this);
+    });
+    $("#imageUpload2").change(function () {
+        readURL2(this);
+    });
+    $("#imageUpload3").change(function () {
+        readURL3(this);
+    });
+
+    $("#imageUpload4").change(function () {
+        readURL4(this);
+    });
+    $("#imageUpload5").change(function () {
+        readURL5(this);
+    });
+    $("#imageUpload6").change(function () {
+        readURL6(this);
+    });
+    $("#imageUpload7").change(function () {
+        readURL7(this);
+    });
+    $("#imageUpload8").change(function () {
+        readURL8(this);
+    });
+    $("#imageUpload9").change(function () {
+        readURL9(this);
+    });
+    $("#imageUpload10").change(function () {
+        readURL10(this);
+    });
 
 
 
 
 
+    var saveForm = function (event) {
+        event.preventDefault();
 
-$("#imageUpload1").change(function() {
-    readURL(this);
-});
-$("#imageUpload2").change(function() {
-    readURL2(this);
-});
-$("#imageUpload3").change(function() {
-    readURL3(this);
-});
-
-$("#imageUpload4").change(function() {
-    readURL4(this);
-});
-$("#imageUpload5").change(function() {
-    readURL5(this);
-});
-$("#imageUpload6").change(function() {
-    readURL6(this);
-});
-$("#imageUpload7").change(function() {
-    readURL7(this);
-});
-$("#imageUpload8").change(function() {
-    readURL8(this);
-});
-$("#imageUpload9").change(function() {
-    readURL9(this);
-});
-$("#imageUpload10").change(function() {
-    readURL10(this);
-});
+        var form = new FormData($('#form').get(0));
 
 
- function form(event) {
-            event.preventDefault();
-            var form = new FormData($('#form').get(0));
-
-            $.ajax({
-                url: '{% url "basic_upload" paciente.id %}',
-                type: $(this).attr('method'),
-                data: form,
-                dataType: 'json',
-                cache: false,
-                processData: false,
-                contentType: false,
-
-                success: function (data) {
-                    if (data.form_is_valid) {
-                        $("#gallery tbody").html(data.html_impressao_list);
+        $.ajax({
+            url: '{% url "create-impressao" %}',
+            type: $(this).attr('method'),
+            data: form,
+            dataType: 'json',
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data.form_is_valid) {
+                    alert('Impressão Digital Salvas');
 
 
-                        alert('Impressão digital salva com sucesso!');
-                    } else {
-                        alert('ERROR');
-                    }
-
-                },
-                statusCode: {
+                } else {
+                    alert('Erro no cadastro!')
+                }
+            },
+             statusCode: {
                     500: function () {
                         alert('Problema no Upload')
                     }
                 }
-            });
-            return false;
-        }
+        });
+        return false;
+    }
 
-        $(function () {
-            $('#form').submit(form);
-        });
-         $(function () {
-            $('#form2').submit(form);
-        });
-          $(function () {
-            $('#form3').submit(form);
-        });
-           $(function () {
-            $('#form4').submit(form);
-        });
-            $(function () {
-            $('#form5').submit(form);
-        });
-             $(function () {
-            $('#form6').submit(form);
-        });
-              $(function () {
-            $('#form7').submit(form);
-        });
-               $(function () {
-            $('#form8').submit(form);
-        });
-                $(function () {
-            $('#form9').submit(form);
+$(function () {
+            $('#form').submit(saveForm);
         });
 
-         $(function () {
-            $('#form10').submit(form);
-        });
-
-
+    {#$('#form').submit(function(e){#}
+    {#       e.preventDefault();#}
+    {#       $form = $(this)#}
+    {#       var formData = new FormData(this);#}
+    {#       $.ajax({#}
+    {#           url: window.location.pathname,#}
+    {#           type: 'POST',#}
+    {#           data: formData,#}
+    {#           success: function (response) {#}
+    {#               $('.error').remove();#}
+    {#               console.log(response)#}
+    {#               if(response.error){#}
+    {#                   $.each(response.errors, function(name, error){#}
+    {#                       error = '<small class="text-muted error">' + error + '</small>'#}
+    {#                       $form.find('[name=' + name + ']').after(error);#}
+    {#                   })#}
+    {#               }#}
+    {#               else{#}
+    {#                   alert(response.message)#}
+    {#                   window.location = ""#}
+    {#               }#}
+    {#           },#}
+    {#           cache: false,#}
+    {#           contentType: false,#}
+    {#           processData: false#}
+    {#       });#}
+    {#   });#}
+    {#   $('#form2').submit(function(e){#}
+    {#       e.preventDefault();#}
+    {#       $form = $(this)#}
+    {#       var formData = new FormData(this);#}
+    {#       $.ajax({#}
+    {#           url: window.location.pathname,#}
+    {#           type: 'POST',#}
+    {#           data: formData,#}
+    {#           success: function (response) {#}
+    {#               $('.error').remove();#}
+    {#               console.log(response)#}
+    {#               if(response.error){#}
+    {#                   $.each(response.errors, function(name, error){#}
+    {#                       error = '<small class="text-muted error">' + error + '</small>'#}
+    {#                       $form.find('[name=' + name + ']').after(error);#}
+    {#                   })#}
+    {#               }#}
+    {#               else{#}
+    {#                   alert(response.message)#}
+    {#                   window.location = ""#}
+    {#               }#}
+    {#           },#}
+    {#           cache: false,#}
+    {#           contentType: false,#}
+    {#           processData: false#}
+    {#       });#}
+    {#   });#}
 
 {% endblock javascript %}
 </script>

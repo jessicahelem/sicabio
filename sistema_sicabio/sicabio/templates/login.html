@@ -1,0 +1,121 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+	<title>Login</title>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/utl.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/man.css'%}">
+<!--===============================================================================================-->
+</head>
+
+<div>
+
+
+	<div class="limiter">
+
+
+		<div class="container-login100">
+
+
+			<div class="wrap-login100">
+
+
+				<div class="login100-pic js-tilt" data-tilt>
+
+					<img src="{% static 'images/imp.png' %}" alt="IMG">
+				</div>
+
+				<form  action="submit", method="post" class="login100-form validate-form">{% csrf_token %}
+					<span class="login100-form-title">
+						Sign In
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Insira o CPF" >
+
+						<input class="input100" type="text" id = 'username'name="username" placeholder="Usuário">
+
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Insira a senha">
+						<input class="input100" type="password" id= 'senha' name="password" placeholder="Senha">
+
+					</div>
+
+
+
+					<div>
+                    <div class="container-login100-form-btn">
+
+						{% for i in messages %}
+						<div class="alert alert-danger">
+							 <strong>Error! </strong>{{i}}
+						</div>
+						{% endfor %}
+						<button type="submit" class="login100-form-btn">
+							Entrar
+						</button>
+					</div>
+						</div>
+
+					<div class="text-center p-t-12">
+						<span style="font-weight:bold;"class="txt1">
+							Esqueceu a
+						</span>
+						<a style="font-weight:bold; "class="txt2" href="#">
+							Senha?
+						</a>
+					</div>
+
+					<div class="text-center pt-5">
+						<a style="font-weight:bold;" class="txt2" href="/cadastro/">
+							Crie uma Conta
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!--===============================================================================================-->
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/popper.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}" ></script>
+<!--===============================================================================================-->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script><!--===============================================================================================-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.2.1/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+
+
+</body>
+</html>
