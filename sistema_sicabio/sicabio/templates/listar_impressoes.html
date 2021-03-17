@@ -105,52 +105,6 @@
         bottom: 50px;
     }
 
-    #form2 {
-        position: relative;
-        bottom: 50px;
-
-    }
-
-    #form3 {
-        position: relative;
-        bottom: 50px;
-    }
-
-    #form4 {
-        position: relative;
-        bottom: 50px;
-    }
-
-    #form5 {
-        position: relative;
-        bottom: 50px;
-    }
-
-    #form6 {
-        position: relative;
-        bottom: 50px;
-    }
-
-    #form7 {
-        position: relative;
-        bottom: 50px;
-    }
-
-    #form8 {
-        position: relative;
-        bottom: 50px;
-    }
-
-    #form9 {
-        position: relative;
-        bottom: 50px;
-    }
-
-    #form10 {
-        position: relative;
-        bottom: 50px;
-    }
-
 
     .container {
         max-width: 960px;
@@ -309,6 +263,16 @@
     $("#imageUpload1").change(function () {
         readURL(this);
     });
+    var qtd = function (){
+    var  card =  document.querySelectorAll('.card').length
+                    console.log(card)
+
+        if (card == 10){
+            $('#form').hide();
+            console.log(card)
+        }
+    }
+    qtd();
     var saveForm = function (event) {
         event.preventDefault();
 

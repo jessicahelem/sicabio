@@ -135,7 +135,6 @@
                     dataType: 'json',
                     beforeSend: function () {
 
-                        $("#myModal").modal("show");
                     },
                     success: function (data) {
                         $("#myModal .modal-content").html(data.html_form);
@@ -157,7 +156,7 @@
                         if (data.form_is_valid) {
                             $("#table_p tbody").html(data.html_paciente_list)
                             alert('Dados Salvos!');
-                            form.trigger("reset");
+                            $('#fo').trigger("reset");
                             $("#myModal ").modal('hide');
 
 

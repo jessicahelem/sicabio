@@ -10,14 +10,13 @@
                        <div class="dropup">
                        <i class="fas fa-ellipsis-v " onclick="myFunction()" id="dropbtn" style="left: 126px;position: relative;bottom: 70px;" ></i>
                         <div class="dropup-content">
-                        <a href="#home">Alterar imagem</a>
                         <a data-toggle="modal" data-target="#modal{{ i.id }}">Excluir</a>
                         </div>
                        </div>
                        <a class="img "> <img  src="{{i.img.url}}" style="width:80%;height: 80px;bottom: 20px;position: relative"> </a>
-                       <b><p class="text-center" style="text-transform: capitalize">{{ i.mao }}</p></b>
+                       <b><p class="text-center" style="text-transform: capitalize;font-size: 0.9em">{{ i.mao }}</p></b>
 
-                       <b><p class="text-center" style="text-transform: capitalize">{{ i.dedos }}</p></b>
+                       <b><p class="text-center" style="text-transform: capitalize;font-size: 0.9em;margin-bottom: 30px;">{{ i.dedos }}</p></b>
                    </div>
                 </div>
 
@@ -30,13 +29,13 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title">Excluir</h4>
+        <h4 class="modal-title">Excluir Impressão Digital</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
       <div class="modal-body text-rigth">
-          Excluir a impressão digital do paciente <b style="text-transform:capitalize;">{{i.paciente.nome_paciente}}?</b>
+          Deseja excluir a impressão digital do paciente <b style="text-transform:capitalize;">{{i.paciente.nome_paciente}}?</b>
       </div>
 
       <!-- Modal footer -->
@@ -46,7 +45,7 @@
               Excluir
           </button>
               </a>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
       </div>
 
     </div>
@@ -69,7 +68,7 @@
          {% endfor %}
 
 
- <div class="row" >
+ <div class="row ml-2">
             <form  method="POST" enctype="multipart/form-data" novalidate="" id="form">{% csrf_token %}
 
                 <div class="col-sm">

@@ -17,9 +17,9 @@
         <td class="actions">
             <div class="btn-group" role="group" aria-label="Basic example">
 
-                   <a href="{{ i.id }}/adicionar-digitais/"> <button class="btn btn-secondary" type="button" data-toggle="tooltip" data-placement="top"
-                            title="Adicionar Digital"><i class="fas fa-fingerprint"></i></button></a>
-               
+                    <a href="../pacientes/{{ i.id }}/digitais/">
+                    <button type="button" class="btn btn-secondary" data-placement="top" title="Realizar análise dermatoglífica"><i class="fas fa-fingerprint"></i></button>
+                </a>
                 <button type="button" class="btn btn-secondary js-update-paciente" data-placement="top" title="Alterar Dados"
                         data-toggle="modal"
                         data-target="#myModal" title="Alterar Dados"
@@ -31,9 +31,7 @@
                     <button type="button" class="btn btn-secondary" data-placement="top" title="Excluir Paciente"><i
                             class="fas fa-trash-alt"></i></button>
                 </a>
-                  <a href="../pacientes/{{ i.id }}/digitais/">
-                    <button type="button" class="btn btn-secondary" data-placement="top" title="Realizar análise dermatoglífica"><i class="fas fa-laptop-code"></i></button>
-                </a>
+
 
             </div>
         </td>
