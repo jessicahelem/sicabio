@@ -21,14 +21,14 @@ def home(request):
 
 
 def list_all_pacientes(request):
-    paciente = Paciente.objects.filter()
+    paciente = Paciente.objects.filter(user=request.user)
 
     busca = request.GET.get('buscar')
 
     if busca:
         paciente = Paciente.objects.filter(nome_paciente__icontains=busca)
     else:
-        paciente_list = Paciente.objects.filter()
+        paciente_list = Paciente.objects.filter(user=request.user)
         paginator = Paginator(paciente_list, 10)
         page = request.GET.get('page', )
         paciente = paginator.get_page(page)
@@ -197,7 +197,7 @@ def paciente_create(request):
     if request.method == 'POST':
         form = PacienteForm(request.POST)
     else:
-        form = PacienteForm(request.POST)
+        form = PacienteForm()
     return save_paciente_form(request, form, 'includes/partial_paciente_create.html')
 
 
@@ -281,4 +281,3 @@ def home(request):
 
     # return render(request, 'listagemPacientes.html', {'paciente': paciente})
     return render(request, 'listagem_pacientes.html')
-

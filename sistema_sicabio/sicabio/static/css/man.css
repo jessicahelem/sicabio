@@ -182,7 +182,7 @@ div.sub_titulo p{
   padding: 15px;
  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#fcfff4+0,e9e9ce+100;Wax+3D+%232 */
 /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#87e0fd+0,53cbf1+40,05abe0+100;Blue+3D+%23+16 */
-background: #042359; /* Old browsers */
+background: #000030; /* Old browsers */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=0 ); /* IE6-9 */
 
 
@@ -198,10 +198,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', end
 .wrap-login100 {
   width: 900px;
   height:600px;
-  background: #fff;
+  background: #fcfcfc;
   border-radius: 10px;
   overflow: hidden;
-  border: solid #042359;
+  border: solid #f1f1f1;
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -234,7 +234,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', end
 .login100-form-title {
   font-family: Arial-Bold;
   font-size: 30px;
-  color: #042359;
+  color: #000030;
   line-height: 1.2;
   text-align: center;
 
@@ -357,7 +357,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', end
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background: #3ABACE;
+  background: #042359;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -374,7 +374,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', end
 }
 
 .login100-form-btn:hover {
-  background:#008EAA;
+  background:#3d4a86
+
+
+
+
 }
 
 

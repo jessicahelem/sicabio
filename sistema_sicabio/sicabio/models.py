@@ -56,7 +56,7 @@ class User(PermissionsMixin, AbstractBaseUser):
 class Paciente(models.Model):
     # id_paciente = models.IntergerField(primary_key=True),
     nome_paciente = models.CharField(max_length=100, null=False)
-    cpf_paciente = models.CharField(max_length=14, null=True,unique=True,default='',blank=True)
+    cpf_paciente = models.CharField(max_length=14, default='Sem Informação',blank=True)
     dt_nascimento = models.DateField(max_length=15)
     user = models.ForeignKey('User',on_delete=models.CASCADE,null=False,default='')
 

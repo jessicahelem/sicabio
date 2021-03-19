@@ -6,6 +6,12 @@ from crispy_forms.layout import Layout, Row, Column
 
 
 class PacienteForm(forms.ModelForm):
+
+    Paciente._meta.get_field('cpf_paciente').blank = True
+    Paciente._meta.get_field('dt_nascimento').blank = False
+    Paciente._meta.get_field('nome_paciente').blank = False
+
+
     class Meta:
         model = Paciente
         fields = '__all__'
@@ -14,7 +20,7 @@ class PacienteForm(forms.ModelForm):
 
         widgets = {
 
-            'cpf_paciente': forms.TextInput(attrs={'data-mask': "000.000.000-00", 'required': 'false'}),
+            'cpf_paciente': forms.TextInput(attrs={'data-mask': "000.000.000-00"}),
             'dt_nascimento': forms.DateInput(attrs={'data-mask': '00/00/0000'})
 
         }

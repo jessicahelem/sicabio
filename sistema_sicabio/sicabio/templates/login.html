@@ -9,27 +9,42 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css'%}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
-<!--===============================================================================================-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
-<!--===============================================================================================-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <!--===============================================================================================-->
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'css/utl.css'%}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/man.css'%}">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+          rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+
 <!--===============================================================================================-->
 </head>
 
 <div>
-
+<style>
+   #eye {
+     position: relative;
+        bottom: 35px;
+       left:245px;
+        cursor: pointer;
+    }
+</style>
 
 	<div class="limiter">
 
@@ -45,9 +60,9 @@
 					<img src="{% static 'images/imp.png' %}" alt="IMG">
 				</div>
 
-				<form  action="submit", method="post" class="login100-form validate-form">{% csrf_token %}
+				<form  action="submit" method="post" class="login100-form validate-form">{% csrf_token %}
 					<span class="login100-form-title">
-						Sign In
+						Bem Vindo
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Insira o CPF" >
@@ -57,7 +72,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Insira a senha">
-						<input class="input100" type="password" id= 'senha' name="password" placeholder="Senha">
+                        <input class="input100" type="password" id= 'senha' name="password" placeholder="Senha"><span id="eye" style="font-color:#f1f1" class="material-icons">remove_red_eye</span>
 
 					</div>
 
@@ -112,6 +127,15 @@
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
+           let btn = document.querySelector('#eye');
+        btn.addEventListener('click', function () {
+            let input = document.querySelector('#senha');
+            if (input.getAttribute('type') == 'password') {
+                input.setAttribute('type', 'text');
+            } else {
+                input.setAttribute('type', 'password');
+            }
+        });
 	</script>
 <!--===============================================================================================-->
 	<script src="{% static 'js/main.js' %}"></script>

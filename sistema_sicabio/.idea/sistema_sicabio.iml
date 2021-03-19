@@ -24,6 +24,8 @@
     <orderEntry type="library" name="tilt.js" level="application" />
     <orderEntry type="library" name="select2" level="application" />
     <orderEntry type="library" name="blueimp-file-upload" level="application" />
+    <orderEntry type="library" name="simple-line-icons" level="application" />
+    <orderEntry type="library" name="icon-font" level="application" />
   </component>
   <component name="PyDocumentationSettings">
     <option name="format" value="PLAIN" />
