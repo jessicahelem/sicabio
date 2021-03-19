@@ -12,7 +12,7 @@ from django.views import View
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import TemplateView
 
-from sicabio.form import PacienteForm, ImpressaoForm
+from sicabio.form import PacienteForm, ImpressaoForm, UsuarioForm
 from sicabio.models import Paciente, Impressao
 
 
@@ -161,26 +161,31 @@ def post(request,id):
 def save_paciente_form(request, form, template_name):
     data = dict()
     if request.method == 'POST':
+        if request.user.is_authenticated:
 
-        if form.is_valid():
+            if form.is_valid():
+                form_m = PacienteForm(request.POST, request.user)
 
-            form.save()
-            data['form_is_valid'] = True
-            print(form.errors)
+                u = form_m.save(commit=False)
+                u.user = request.user
 
-            paciente = Paciente.objects.filter()
-            data['html_paciente_list'] = render_to_string('includes/partial_paciente_list.html', {
-                'paciente': paciente
-            })
+                u.save()
+                data['form_is_valid'] = True
+                print(form.errors)
+
+                paciente = Paciente.objects.filter(user=request.user)
+                data['html_paciente_list'] = render_to_string('includes/partial_paciente_list.html', {
+                    'paciente': paciente
+                })
 
 
 
 
-        else:
-            data['form_is_valid'] = False
-            print('invalid form')
+            else:
+                data['form_is_valid'] = False
+                print('invalid form')
 
-            print(form.errors)
+                print(form.errors)
     print(form.errors)
 
     context = {'form': form}
@@ -192,7 +197,7 @@ def paciente_create(request):
     if request.method == 'POST':
         form = PacienteForm(request.POST)
     else:
-        form = PacienteForm()
+        form = PacienteForm(request.POST)
     return save_paciente_form(request, form, 'includes/partial_paciente_create.html')
 
 
@@ -216,3 +221,64 @@ def delete_impressao(request,id,id_impressao):
     impressao = Impressao.objects.get(id=id_impressao)
     impressao.delete()
     return redirect('../../../digitais/',{'impressao':impressao})
+
+
+@login_required(login_url='/login/')
+def logout_user(request):
+    logout(request)
+    return redirect('/login')
+
+
+@csrf_protect
+def cadastro(request):
+    form = UsuarioForm(request.POST or None)
+    context = {'form': form}
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Cadastro realizado com sucesso!")
+        else:
+            for field, items in form.errors.items():
+                for item in items:
+                    messages.error(request, '{}: {}'.format(field, item))
+            print(form.errors)
+
+            return redirect('/cadastro/')
+    return render(request, "base_cadastro.html", context)
+
+
+def do_login(request):
+    return render(request, "login.html")
+
+
+@csrf_protect
+def submit_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        usuario = authenticate(username=username, password=password)
+
+        if usuario is not None:
+            login(request, usuario)
+
+            return redirect('../pacientes/')
+        else:
+            messages.error(request, 'Usuário e senha inválidos. Por favor, tente novamente.')
+    return redirect('/login/')
+
+
+@login_required(login_url='/login/')
+def home(request):
+    # busca = request.GET.get('buscar', )
+
+    # if busca:
+    #     paciente = Paciente.objects.filter(nome_paciente__icontains=busca)
+    # else:
+    #     paciente_list = Paciente.objects.filter()
+    #     paginator = Paginator(paciente_list, 10)
+    #     page = request.GET.get('page', )
+    #     paciente = paginator.get_page(page)
+
+    # return render(request, 'listagemPacientes.html', {'paciente': paciente})
+    return render(request, 'listagem_pacientes.html')
+

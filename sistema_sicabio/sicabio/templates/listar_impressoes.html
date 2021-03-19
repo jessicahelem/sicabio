@@ -10,6 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
@@ -26,7 +27,6 @@
 
     body {
         background: whitesmoke;
-        font-family: "Open Sans", sans-serif;
     }
 
     #cont {
@@ -95,10 +95,7 @@
     }
 
 
-    body {
-        background: whitesmoke;
-        font-family: "Open Sans", sans-serif;
-    }
+
 
     #form {
         position: relative;
@@ -202,7 +199,7 @@
 </style>
 {% include 'navbarII.html' %}
 
-<div class="container" style="position: relative;margin-left:200px; " id="cont">
+<div class="container-fluid" style="position: relative; " id="cont">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb" style="background-color:#F5F5F5">
             <li class="breadcrumb-item "><a href="../../../pacientes"> Pacientes</a></li>
@@ -267,9 +264,14 @@
     var  card =  document.querySelectorAll('.card').length
                     console.log(card)
 
-        if (card == 10){
+        if (card == 10 || card > 10){
             $('#form').hide();
             console.log(card)
+        }
+        else {
+            $('#form').show();
+
+
         }
     }
     qtd();

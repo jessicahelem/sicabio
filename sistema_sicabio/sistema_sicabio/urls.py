@@ -27,7 +27,9 @@ urlpatterns = [
     path('login/', views.do_login),
     path("logout/", views.logout_user),
     path('login/submit', views.submit_login),
-    path('Home',views.list_all_pacientes),
+    path('cadastro/', views.cadastro),
+
+    path('',views.home),
     url(r'^paciente/create/$', views.paciente_create, name='create-paciente'),
     url(r'^paciente/(?P<pk>\w{0,50})/update/$', views.paciente_update, name='paciente_update'),
     url(r'^pacientes/$', views.list_all_pacientes, name='paciente_list'),
