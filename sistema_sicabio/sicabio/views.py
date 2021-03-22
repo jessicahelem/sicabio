@@ -16,10 +16,8 @@ from sicabio.form import PacienteForm, ImpressaoForm, UsuarioForm
 from sicabio.models import Paciente, Impressao
 
 
-def home(request):
-    return render(request, 'listagem_pacientes.html')
 
-
+@login_required(login_url='/login/')
 def list_all_pacientes(request):
     paciente = Paciente.objects.filter(user=request.user)
 
@@ -35,18 +33,17 @@ def list_all_pacientes(request):
 
     return render(request, 'listagem_pacientes.html', {'paciente': paciente})
 
-
+@login_required(login_url='/login/')
 def delete_paciente(request, id):
     paciente = Paciente.objects.get(id=id)
     paciente.delete()
     messages.success(request, "Paciente excluído com sucesso.")
     return redirect('../../../pacientes/')
 
-
+@login_required(login_url='/login/')
 def form(request, id):
     paciente = Paciente.objects.get(id=id)
     return render(request, 'add_digital.html', {'paciente': paciente})
-
 
 def do_login(request):
     return render(request, 'login.html')
@@ -125,6 +122,7 @@ def logout_user(request):
 #         print(form.errors)
 #
 #     return save_impressao_form(request, form, 'add_digital.html')
+@login_required(login_url='/login/')
 @csrf_protect
 def post(request,id):
     paciente_id = request.POST.get('id_paciente')
@@ -156,7 +154,7 @@ def post(request,id):
     return render(request,'listar_impressoes.html',{'form':form})
 
 
-
+@login_required(login_url='/login/')
 @csrf_protect
 def save_paciente_form(request, form, template_name):
     data = dict()
@@ -192,7 +190,7 @@ def save_paciente_form(request, form, template_name):
     data['html_form'] = render_to_string(template_name, context, request=request)
     return JsonResponse(data)
 
-
+@login_required(login_url='/login/')
 def paciente_create(request):
     if request.method == 'POST':
         form = PacienteForm(request.POST)
@@ -200,7 +198,7 @@ def paciente_create(request):
         form = PacienteForm()
     return save_paciente_form(request, form, 'includes/partial_paciente_create.html')
 
-
+@login_required(login_url='/login/')
 def paciente_update(request, pk):
     paciente = get_object_or_404(Paciente, pk=pk)
     if request.method == 'POST':
@@ -210,13 +208,15 @@ def paciente_update(request, pk):
 
     return save_paciente_form(request, form, 'includes/partial_paciente_update.html')
 
-
+@login_required(login_url='/login/')
 def listarImpressoes(request, id):
     paciente = Paciente.objects.get(id=id)
     impressao = Impressao.objects.filter(paciente=paciente)
 
     return render(request, 'listar_impressoes.html', {'paciente': paciente, 'impressao': impressao})
 
+
+@login_required(login_url='/login/')
 def delete_impressao(request,id,id_impressao):
     impressao = Impressao.objects.get(id=id_impressao)
     impressao.delete()
@@ -228,7 +228,7 @@ def logout_user(request):
     logout(request)
     return redirect('/login')
 
-
+@login_required(login_url='/login/')
 @csrf_protect
 def cadastro(request):
     form = UsuarioForm(request.POST or None)
@@ -269,15 +269,5 @@ def submit_login(request):
 
 @login_required(login_url='/login/')
 def home(request):
-    # busca = request.GET.get('buscar', )
 
-    # if busca:
-    #     paciente = Paciente.objects.filter(nome_paciente__icontains=busca)
-    # else:
-    #     paciente_list = Paciente.objects.filter()
-    #     paginator = Paginator(paciente_list, 10)
-    #     page = request.GET.get('page', )
-    #     paciente = paginator.get_page(page)
-
-    # return render(request, 'listagemPacientes.html', {'paciente': paciente})
-    return render(request, 'listagem_pacientes.html')
+    return render(request, 'login.html')
