@@ -77,4 +77,9 @@ class Impressao(models.Model):
         return str(self.id)
 
 
+class Analise(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE,null=False)
+    paciente = models.ForeignKey(Paciente,on_delete=models.CASCADE,null=False)
+    capacidade= models.CharField(max_length=200,null=False,default='')
+
 
