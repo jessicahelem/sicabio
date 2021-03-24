@@ -199,8 +199,8 @@ def paciente_create(request):
     return save_paciente_form(request, form, 'includes/partial_paciente_create.html')
 
 @login_required(login_url='/login/')
-def paciente_update(request, pk):
-    paciente = get_object_or_404(Paciente, pk=pk)
+def paciente_update(request, id):
+    paciente = get_object_or_404(Paciente, id=id)
     if request.method == 'POST':
         form = PacienteForm(request.POST, instance=paciente)
     else:
@@ -228,7 +228,6 @@ def logout_user(request):
     logout(request)
     return redirect('/login')
 
-@login_required(login_url='/login/')
 @csrf_protect
 def cadastro(request):
     form = UsuarioForm(request.POST or None)

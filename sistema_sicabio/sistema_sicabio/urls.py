@@ -31,13 +31,10 @@ urlpatterns = [
 
     path('',views.home),
     url(r'^paciente/create/$', views.paciente_create, name='create-paciente'),
-    url(r'^paciente/(?P<pk>\w{0,50})/update/$', views.paciente_update, name='paciente_update'),
+    url(r'^paciente/(?P<id>\w{0,50})/update/$', views.paciente_update, name='paciente_update'),
     url(r'^pacientes/$', views.list_all_pacientes, name='paciente_list'),
     path('pacientes/excluir_paciente/<id>/', views.delete_paciente),
-    # path('pacientes/<id>/adicionar-digitais/submit', views.set_digitais),
     path('pacientes/<id>/digitais/', views.listarImpressoes),
-    # url(r'^pacientes/(?P<id>\w{0,50})/adicionar-digitais/$', views.ViewImpressao.as_view(), name='view-impresssao'),
-    # url(r'^ajax/(?P<id>\w{0,50})/adicionar-digitais/$',views.BasicUploadView, name='basic_upload'),
     url(r'^pacientes/(?P<id>\w{0,50})/digitais/create', views.post, name='create-impressao'),
     path('pacientes/<id>/digitais/delete_impressao/<int:id_impressao>/', views.delete_impressao),
 ]
