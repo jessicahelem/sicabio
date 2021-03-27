@@ -29,7 +29,7 @@ urlpatterns = [
     path('login/submit', views.submit_login),
     path('cadastro/', views.cadastro),
 
-    path('',views.home),
+    path('login/',views.home),
     url(r'^paciente/create/$', views.paciente_create, name='create-paciente'),
     url(r'^paciente/(?P<id>\w{0,50})/update/$', views.paciente_update, name='paciente_update'),
     url(r'^pacientes/$', views.list_all_pacientes, name='paciente_list'),

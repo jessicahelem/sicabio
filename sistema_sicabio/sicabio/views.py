@@ -266,7 +266,5 @@ def submit_login(request):
     return redirect('/login/')
 
 
-@login_required(login_url='/login/')
 def home(request):
-
-    return render(request, 'login.html')
+    return redirect('/login/')
