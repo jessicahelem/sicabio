@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{a076d05399, blueimp-file-upload, bootstrap-table, icon-font, jquery-3.3.1, jquery-3.6.0, jquery-resizable-columns, jquery.mask, popper.js, select2, simple-line-icons, tilt.js, w3}" />
+    <file url="file://$PROJECT_DIR$" libraries="{a076d05399, blueimp-file-upload, bootstrap-table, dataTables.bootstrap5, icon-font, jquery-3.3.1, jquery-3.5.1, jquery-3.6.0, jquery-resizable-columns, jquery.dataTables, jquery.mask, jquery.tablesorter, popper.js, select2, simple-line-icons, tilt.js, w3}" />
   </component>
 </project>

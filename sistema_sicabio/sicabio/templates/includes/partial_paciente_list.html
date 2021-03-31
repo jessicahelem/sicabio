@@ -1,4 +1,4 @@
-
+<thead>
 <tr>
     <th>ID</th>
     <th>Nome</th>
@@ -6,8 +6,9 @@
     <th>Data de Nascimento</th>
     <th class="actions">Ações</th>
 </tr>
-
+</thead>
 {% for i in paciente %}
+
     <tr>
         <td>{{ i.id }}</td>
         <td style="text-transform: capitalize">{{ i.nome_paciente }}</td>
