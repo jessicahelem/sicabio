@@ -40,10 +40,7 @@ def delete_paciente(request, id):
     messages.success(request, "Paciente excluído com sucesso.")
     return redirect('../../../pacientes/')
 
-@login_required(login_url='/login/')
-def form(request, id):
-    paciente = Paciente.objects.get(id=id)
-    return render(request, 'add_digital.html', {'paciente': paciente})
+
 
 def do_login(request):
     return render(request, 'login.html')

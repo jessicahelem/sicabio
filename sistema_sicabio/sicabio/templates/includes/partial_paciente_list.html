@@ -1,3 +1,4 @@
+
 <tr>
     <th>ID</th>
     <th>Nome</th>
@@ -9,7 +10,7 @@
 {% for i in paciente %}
     <tr>
         <td>{{ i.id }}</td>
-        <td>{{ i.nome_paciente }}</td>
+        <td style="text-transform: capitalize">{{ i.nome_paciente }}</td>
         <td>{{ i.cpf_paciente }}</td>
         <td>{{ i.dt_nascimento }}</td>
 
@@ -27,10 +28,12 @@
 
 
 
-                <a href="excluir_paciente/{{ i.id }}/">
+                 <a data-toggle="modal" data-target="#modal{{ i.id }}">
+
                     <button type="button" class="btn btn-secondary" data-placement="top" title="Excluir Paciente"><i
                             class="fas fa-trash-alt"></i></button>
                 </a>
+
                 <a href="">
                     <button type="button" class=" btn btn-secondary" data-placement="top" title="Mostrar Resultado da Análise Dermatoglífica"><i class="far fa-clipboard"></i></button>
                 </a>
@@ -40,5 +43,35 @@
         </td>
 
     </tr>
+
+       <div class="modal fade" id="modal{{ i.id }}">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Excluir Paciente</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body text-rigth">
+          Deseja excluir o paciente <b style="text-transform:capitalize;">{{i.nome_paciente}}?</b>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+           <a href="excluir_paciente/{{ i.id }}/">
+
+          <button type="button" class="btn btn-danger" >
+              Excluir
+          </button>
+              </a>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 {% endfor %}
